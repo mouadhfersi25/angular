@@ -1,0 +1,24 @@
+<div class="container">
+    <input type="text" [(ngModel)]="titre" placeholder="Rechercher par titre">
+    <div class="row">
+        <div class="col-md-4" style="margin-bottom: 20px" *ngFor="let cat of categories">
+            <div *ngIf="!titre || (cat.title.toLowerCase() === titre.toLowerCase())">
+                <img
+                    [src]="cat.image"
+                    [alt]="cat.title"
+                    class="img-fluid h-50 w-75"
+                    (click)="showDesc(cat.description)"
+                />
+                <h3>{{cat.title | uppercase}}</h3>
+                <button class="btn btn-primary" appHighlighter *ngIf="cat.available else alt" [routerLink]="['/productsByCategory',cat.id]" [queryParams]="{'name':cat.title}">Voir produits
+                </button> 
+                <button class="btn btn-primary" routerLink="details"   
+                        [queryParams]="{ desc: cat.description }">Voir Details
+                </button>  
+                <router-outlet></router-outlet>
+                <ng-template #alt><p style="color:red">Categorie non disponible</p></ng-template>
+           
+            </div>
+        </div>
+    </div>
+</div>

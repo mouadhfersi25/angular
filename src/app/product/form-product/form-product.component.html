@@ -1,0 +1,75 @@
+<!-- <form #addForm1="ngForm">
+    <div class="form-group">
+        <label for="">Name</label>
+        <input type="email" class="form-control" name="title" ngModel #title="ngModel" required minlength="4">
+         <small class="text-danger" *ngIf="title.invalid && title.touched">Required field!</small> 
+
+        <small class="text-danger" *ngIf="title.errors?.['required'] && title.touched">Required field!</small>
+        <small class="text-danger" *ngIf="title.errors?.['minlength'] && title.touched">At Least 4 chacarters!</small>
+      </div>
+
+      <div class="form-group">
+        <label for="">image</label>
+        <input type="file" class="form-control" name="image" ngModel #image="ngModel">
+      </div>
+      <div class="form-group">
+        <label for="">description</label>
+        <textarea rows="2" cols="4" class="form-control" name="description" ngModel #description="ngModel"></textarea>
+      </div>
+       <input type="checkbox" name="available" #available="ngModel" ngModel>Available
+      <input type="checkbox" name="available" #available="ngModel" ngModel>Not Available 
+      <button class="btn btn-primary">Save</button>
+</form>  -->
+<form [formGroup]="productForm" (ngSubmit)="onSave()">
+  <div>
+    <label for="name">Name</label>
+    <input id="name" formControlName="name" type="text" />
+    <div *ngIf="productForm.get('name')?.invalid && productForm.get('name')?.touched">
+      <small *ngIf="productForm.get('name')?.errors?.['required']">Le nom est obligatoire.</small>
+      <small *ngIf="productForm.get('name')?.errors?.['minlength']">Le nom doit contenir au moins 5 caractères.</small>
+      <small *ngIf="productForm.get('name')?.errors?.['pattern']">Le nom ne doit contenir que des lettres.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="image">Image URL</label>
+    <input id="image" formControlName="image" type="text" />
+  </div>
+
+  <div>
+    <label for="categoryId">Category ID</label>
+    <input id="categoryId" formControlName="categoryId" type="number" />
+    <div *ngIf="productForm.get('categoryId')?.invalid && productForm.get('categoryId')?.touched">
+      <small>Le champ Category ID est obligatoire.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="description">Description</label>
+    <textarea id="description" formControlName="description"></textarea>
+  </div>
+
+  <div>
+    <label for="price">Price</label>
+    <input id="price" formControlName="price" type="text" />
+    <div *ngIf="productForm.get('price')?.invalid && productForm.get('price')?.touched">
+      <small *ngIf="productForm.get('price')?.errors?.['required']">Le prix est obligatoire.</small>
+      <small *ngIf="productForm.get('price')?.errors?.['pattern']">Le prix doit contenir uniquement des chiffres et des points.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="brand">Brand</label>
+    <input id="brand" formControlName="brand" type="text" />
+  </div>
+
+  <div>
+    <label for="promotion">Promotion</label>
+    <input id="promotion" formControlName="promotion" type="number" />
+    <div *ngIf="productForm.get('promotion')?.invalid && productForm.get('promotion')?.touched">
+      <small>La promotion doit être un nombre inférieur ou égal à 100.</small>
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="productForm.invalid">Save</button>
+</form>
