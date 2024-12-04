@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Product } from '../Models/product';
-import { Categorie } from './../Models/categorie';
+import { Product } from '../models/product';
+import { Categorie } from '../models/categorie';
 
 
 @Component({

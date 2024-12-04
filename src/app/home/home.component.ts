@@ -7,11 +7,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  
-  
 constructor(private Route:Router){}
-  goToCategories(){
-    this.Route.navigate(['/categories'])
 
-   }
+goToCategories(){
+  this.Route.navigate(['categories']);
+}
+property: boolean = false
+
+
+
 }

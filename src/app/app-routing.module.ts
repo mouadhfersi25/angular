@@ -1,25 +1,38 @@
-import { NgModule, Component } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
-import { ListeCategoriesComponent } from './liste-categories/liste-categories.component';
+import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { ProductsCategoryComponent } from './products-category/products-category.component';
+import { ProductCategoryComponent } from './product-category/product-category.component';
 import { DetailsCategoryComponent } from './details-category/details-category.component';
-import { AddCategoryComponent } from './add-category/add-category.component';
-import { UserComponent } from './user/user.component';
+import { ProfileModule } from './profile/profile.module';
+import { ProductModule } from './product/product.module';
+import { ContactModule } from './contact/contact.module';
+import { AproposModule } from './apropos/apropos.module';
+import { AddCategorieComponent } from './add-categorie/add-categorie.component';
 
 const routes: Routes = [
-  {path:'' , redirectTo:'home' , pathMatch:"full"},
-  {path:'home' , component:HomeComponent, 
-    children:[{path:'categories' , component:ListeCategoriesComponent}]
+  {
+    path:'',redirectTo:'home',pathMatch:"full"
   },
-  {path:'categories' , component:ListeCategoriesComponent,children :[{path:'details', component:DetailsCategoryComponent}]},
-  {path:'productsByCategory/:id',component:ProductsCategoryComponent, },
-  {path:'addUser',component:UserComponent},
-  {path:'addCategory', component:AddCategoryComponent},
-  {path:"products",loadChildren:()=>import('./product/product.module').then(x=>x.ProductModule)},
-  {path:"**" , component:NotfoundComponent}
-  
+  {
+    path:'home', component:HomeComponent,
+    children:[ {path:'categories', component:ListCategoriesComponent}]
+  },
+  {
+    path:'categories', component:ListCategoriesComponent,
+    children:[ {path:'detail/id', component:DetailsCategoryComponent}]
+  },
+  {
+    path:'addCategorie', component:AddCategorieComponent,
+  },
+  { path: 'productcategorie/:id', component: ProductCategoryComponent},
+  {path:"profile", loadChildren:()=>import('./profile/profile.module').then(x=>ProfileModule)},
+  {path:"product", loadChildren:()=>import('./product/product.module').then(x=>ProductModule)},
+  {path:"contact", loadChildren:()=>import('./contact/contact.module').then(x=>ContactModule)},
+  {path:"apropos", loadChildren:()=>import('./apropos/apropos.module').then(x=>AproposModule)},
+  { path:"**",component:NotfoundComponent },
+  ​
 ];
 
 @NgModule({

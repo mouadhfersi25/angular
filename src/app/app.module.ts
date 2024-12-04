@@ -1,21 +1,23 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { ListeCategoriesComponent } from './liste-categories/liste-categories.component';
+import { ListCategoriesComponent } from './list-categories/list-categories.component';
 import { HighlighterDirective } from './highlighter.directive';
 import { FormsModule } from '@angular/forms';
-import { SearchPipe } from './search.pipe';
+import { FilterPipe } from './filter.pipe';
 import { NotfoundComponent } from './notfound/notfound.component';
-import { ProductsCategoryComponent } from './products-category/products-category.component';
+import { ProductCategoryComponent } from './product-category/product-category.component';
+import { ProductsCategoryQPComponent } from './products-category-qp/products-category-qp.component';
 import { DetailsCategoryComponent } from './details-category/details-category.component';
-import { AddCategoryComponent } from './add-category/add-category.component';
-import { UserComponent } from './user/user.component';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { ProfileModule } from './profile/profile.module';
+import { AddCategorieComponent } from './add-categorie/add-categorie.component';
+import { ProductModule } from './product/product.module';
+import { CardComponent } from './card/card.component';
 
 @NgModule({
   declarations: [
@@ -23,21 +25,23 @@ import { ReactiveFormsModule } from '@angular/forms';
     HeaderComponent,
     FooterComponent,
     HomeComponent,
-    ListeCategoriesComponent,
+    ListCategoriesComponent,
     HighlighterDirective,
-    SearchPipe,
+    FilterPipe,
     NotfoundComponent,
-    ProductsCategoryComponent,
+    ProductCategoryComponent,
+    ProductsCategoryQPComponent,
     DetailsCategoryComponent,
-    AddCategoryComponent,
-    UserComponent
+    AddCategorieComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
-    
+    ProfileModule,
+    ProductModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

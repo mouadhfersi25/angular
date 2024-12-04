@@ -6,6 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  t=4;
- list=["a","b","c","d","e","f"];
+  // mFp = 'msg from parent';
+  
+  // getValueFromCh(data: string){
+  //   alert(data);
+  // }
 }
